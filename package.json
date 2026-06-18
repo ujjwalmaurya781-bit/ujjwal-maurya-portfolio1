@@ -13,5 +13,8 @@
     "graphic-designer"
   ],
   "author": "Ujjwal Maurya",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
 }

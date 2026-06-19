@@ -1,6 +1,8 @@
 /**
  * Helper Utilities & Micro-interactions
  */
+import assetsManifest from './assets-manifest.json';
+
 
 // 1. Scroll-driven Fade-in Observer
 export function initScrollObserver() {
@@ -138,37 +140,41 @@ export function initHeroParallax() {
     });
 }
 
-// 4. Fetch images from a folder via the API
+// 4. Fetch images from a folder via static manifest
 export async function fetchImagesFromFolder(folderPath) {
-    try {
-        const response = await fetch(`/api/list-images?folder=${encodeURIComponent(folderPath)}`);
-        if (!response.ok) {
-            console.warn(`Failed to list images for folder: ${folderPath}. Status: ${response.status}`);
-            return [];
-        }
-        return await response.json();
-    } catch (e) {
-        console.error(`Error fetching images from folder ${folderPath}:`, e);
-        return [];
+    let cleanPath = folderPath.replace(/\\/g, '/').replace(/^\//, '');
+    if (cleanPath && !cleanPath.endsWith('/')) {
+        cleanPath += '/';
     }
+    return assetsManifest[cleanPath] || [];
 }
 
-// 5. Upload file to a folder via the API
-export async function uploadFileToFolder(folderPath, file) {
-    try {
-        const url = `/api/upload?folder=${encodeURIComponent(folderPath)}&filename=${encodeURIComponent(file.name)}`;
-        const response = await fetch(url, {
-            method: 'POST',
-            body: file
-        });
-        if (!response.ok) {
-            throw new Error(`Upload failed with status ${response.status}`);
-        }
-        return true;
-    } catch (e) {
-        console.error("Error uploading file:", e);
-        return false;
+// 5. Fetch subdirectories under a folder path via static manifest
+export async function fetchSubdirsFromFolder(folderPath) {
+    let cleanPath = folderPath.replace(/\\/g, '/').replace(/^\//, '');
+    if (cleanPath && !cleanPath.endsWith('/')) {
+        cleanPath += '/';
     }
+    
+    const subdirs = new Set();
+    const keys = Object.keys(assetsManifest);
+    
+    for (const key of keys) {
+        if (key.startsWith(cleanPath) && key !== cleanPath) {
+            const subPath = key.substring(cleanPath.length);
+            const firstSegment = subPath.split('/')[0];
+            if (firstSegment) {
+                subdirs.add(firstSegment);
+            }
+        }
+    }
+    return Array.from(subdirs);
+}
+
+// 6. Upload file to a folder (stubbed since we are 100% static)
+export async function uploadFileToFolder(folderPath, file) {
+    console.warn("File upload is disabled in static mode.");
+    return false;
 }
 
 // 6. Initialize a dynamic image gallery container

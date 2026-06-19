@@ -16,38 +16,38 @@ const marqueeItems = [
 
 const projects = [
     {
-        id: "brand-comm",
+        id: "campaigns",
         num: "01",
-        category: "Social Media Communication",
-        title: "Social Campaigns & Creatives",
-        description: "Social media campaigns, product promotions, awareness creatives, festival campaigns, dealer engagement creatives, and visual communication projects.",
+        category: "Social Media Campaigns",
+        title: "Advertising & Launch Graphics",
+        description: "Large-format advertising campaigns, marketing banners, launch campaigns, fitness advertising, and promotional creatives.",
+        coverImage: "",
+        link: "#campaigns"
+    },
+    {
+        id: "brand-comm",
+        num: "02",
+        category: "Brand Communication",
+        title: "Social Campaigns & Brand Identity",
+        description: "Social media visual campaigns, product promos, awareness creatives, festival graphics, and corporate dealer promotions.",
         coverImage: "",
         link: "#brand-comm"
     },
     {
         id: "ecommerce-design",
-        num: "02",
-        category: "E-Commerce Design",
-        title: "Listing Pages & A+ Content",
-        description: "Amazon Listing Images, Amazon A+ Content, Infographics, Product Storytelling, and Conversion-focused creatives.",
+        num: "03",
+        category: "E-commerce Design",
+        title: "Listing Pages & Storefronts",
+        description: "Amazon Listing Images, Amazon A+ Content modules, infographics, product storytelling layouts, and conversion-focused creatives.",
         coverImage: "",
         link: "#ecommerce"
     },
     {
-        id: "campaigns",
-        num: "03",
-        category: "Brand Campaigns",
-        title: "Advertising & Launch Graphics",
-        description: "Large-format advertising campaigns, marketing banners, launch campaigns, and promotional creatives.",
-        coverImage: "",
-        link: "#campaigns"
-    },
-    {
         id: "renders",
         num: "04",
-        category: "Product Rendering & Visualization",
+        category: "Product Rendering",
         title: "3D CGI Renders & Packshots",
-        description: "Product renders, packaging renders, lifestyle renders, CGI visuals, and commercial product presentations.",
+        description: "Packaging renders, lifestyles, product visualization, structural details, and high-fidelity CGI arrangements.",
         coverImage: "",
         link: "#renders"
     }
@@ -174,7 +174,7 @@ export function renderHome() {
                         <span>View Work</span>
                         <span class="btn-icon">&rarr;</span>
                     </a>
-                    <a href="assets/resume/Ujjwal-Maurya-Resume.pdf" download="Ujjwal-Maurya-Resume.pdf" class="btn btn-secondary hero-download-btn">
+                    <a href="javascript:void(0)" class="btn btn-secondary hero-download-btn">
                         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-left" style="margin-right: 8px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         <span>Download Resume</span>
                     </a>
@@ -315,7 +315,7 @@ export function renderHome() {
                     <h2 class="section-title">Selected Work</h2>
                 </div>
                 <div style="font-family: var(--font-heading); color: var(--color-text-dark); font-weight: 500;">
-                    04 / PROJECT BUNDLES
+                    05 / WORK CATEGORIES
                 </div>
             </div>
             
@@ -403,7 +403,7 @@ export function renderHome() {
                     <p class="about-bio-para" style="font-size: 0.95rem; margin-bottom: var(--space-md); line-height: 1.7;">
                         High proficiency in Adobe Creative Suite, specifically Adobe Photoshop for composite design, Illustrator for vector identity files, and After Effects &amp; Premiere Pro for motion visual campaigns and content ideation.
                     </p>
-                    <a href="assets/resume/Ujjwal-Maurya-Resume.pdf" download="Ujjwal-Maurya-Resume.pdf" class="btn btn-secondary hero-download-btn" style="width: 100%; border-radius: 30px;">
+                    <a href="javascript:void(0)" class="btn btn-secondary hero-download-btn" style="width: 100%; border-radius: 30px;">
                         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-left" style="margin-right: 8px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                         <span>Download Resume PDF</span>
                     </a>
@@ -451,28 +451,36 @@ export function renderHome() {
                     </a>
                 </div>
 
-                <!-- Footer Social Links row with all 5 -->
-                <div class="contact-social-row fade-in-section">
-                    <a href="mailto:ujjwalmaurya781@gmail.com" target="_blank" rel="noopener" class="social-link-item">
-                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <span>Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ujjwal-maurya-3a997521a" target="_blank" rel="noopener" class="social-link-item">
-                        <svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://www.behance.net/ujjwalmaurya2" target="_blank" rel="noopener" class="social-link-item">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.224 8.448c.515 0 .973.076 1.373.228a2.533 2.533 0 0 1 1.002.668c.264.293.46.657.585 1.092.126.435.189.925.189 1.472 0 .548-.066 1.033-.199 1.458-.133.424-.336.782-.609 1.071a2.802 2.802 0 0 1-1.043.682c-.419.162-.924.243-1.516.243H3.067V8.448h5.157zm-1.09 3.033c0-.306-.03-.564-.092-.773a1.298 1.298 0 0 0-.293-.538 1.258 1.258 0 0 0-.52-.338c-.218-.083-.497-.124-.836-.124H5.197v3.527h1.037c.367 0 .66-.039.879-.118.219-.078.394-.2.525-.367.13-.167.222-.375.275-.625.053-.25.079-.533.079-.848c-.001.002-.001.002-.001.002zm1.096-4.526c.394 0 .736.031 1.028.092.292.062.537.159.736.293.199.134.351.314.457.538.106.225.159.508.159.851 0 .285-.038.533-.114.743a1.597 1.597 0 0 1-.36.562 1.936 1.936 0 0 1-.655.421c-.279.112-.647.168-1.106.168H5.197V6.955H8.23zm-.462 2.115c0-.18-.018-.328-.053-.446a.792.792 0 0 0-.171-.302.736.736 0 0 0-.307-.189c-.13-.046-.307-.069-.533-.069H5.197v2.022h1.564c.225 0 .399-.02.52-.059a.784.784 0 0 0 .3-.171c.097-.091.166-.211.205-.36a1.458 1.458 0 0 0 .06-.411v-.016zm12.333-.509h-4.945c.012-.416.082-.767.21-1.053.128-.286.309-.52.544-.702a2.38 2.38 0 0 1 .842-.405c.328-.088.7-.132 1.116-.132.394 0 .738.041 1.032.124.294.083.541.206.742.367.2.161.353.364.456.609.103.245.16.529.171.854.004-.002.032-.062.032-.062zm.315 2.115h1.996a6.388 6.388 0 0 1-.416 1.583 4.549 4.549 0 0 1-.94 1.383c-.413.413-.918.736-1.517.969-.598.232-1.29.349-2.077.349-.817 0-1.529-.12-2.136-.359a4.673 4.673 0 0 1-1.602-1.026 5.093 5.093 0 0 1-1.047-1.637c-.25-.639-.375-1.371-.375-2.196 0-.814.122-1.536.367-2.166a4.896 4.896 0 0 1 1.028-1.633 4.678 4.678 0 0 1 1.583-1.032c.602-.245 1.3-.367 2.094-.367.755 0 1.425.111 2.01.334.585.222 1.074.536 1.468.94.394.404.69.897.888 1.48.199.582.289 1.233.27 1.953h-7.653c0 .356.035.688.106.994.07.307.19.57.359.789.168.219.394.39.675.513.282.123.633.184 1.053.184.533 0 .963-.092 1.29-.276a2.27 2.27 0 0 0 .805-.724c.214-.298.358-.636.432-1.014.07-.384.101-.762.092-1.139zm-.375-7.534h-4.333v1.083h4.333V4.004z"></path></svg>
-                        <span>Behance</span>
-                    </a>
-                    <a href="https://www.instagram.com/krishhhhhmaurya" target="_blank" rel="noopener" class="social-link-item">
-                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://youtube.com/@buntyyyyyyy" target="_blank" rel="noopener" class="social-link-item">
-                        <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-                        <span>YouTube</span>
-                    </a>
+                <!-- RESUME PREVIEW MODAL -->
+                <div class="resume-modal-overlay" id="resume-modal">
+                    <div class="resume-modal-container">
+                        <button class="resume-modal-close" id="resume-modal-close" aria-label="Close Modal">&times;</button>
+                        <div class="resume-modal-content">
+                            <div class="resume-modal-preview">
+                                <div class="resume-preview-img-wrapper" style="position: relative; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 12px; background: rgba(255, 255, 255, 0.01);">
+                                    <img src="/assets/resume/resume-preview.jpg" alt="Ujjwal Maurya Resume Preview" class="resume-preview-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="resume-preview-fallback" style="display: none; width: 100%; height: 100%; align-items: center; justify-content: center; text-align: center; color: var(--color-text-muted); font-style: italic; min-height: 400px; font-family: var(--font-body); font-size: 0.9rem;">
+                                        Resume Preview Not Available
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="resume-modal-details">
+                                <h3 class="resume-modal-title">Ujjwal Maurya</h3>
+                                <p class="resume-modal-subtitle">Brand Designer &amp; Visual Storyteller</p>
+                                <div class="resume-modal-divider"></div>
+                                <h4 class="resume-modal-section-title">Professional Summary</h4>
+                                <p class="resume-modal-text">
+                                    Visual Designer &amp; Brand Communication Specialist with 1.5+ years of experience. High proficiency in Adobe Creative Suite, crafting high-impact social media campaigns, advertising creatives, and e-commerce storytelling. Combining strategic design with visual storytelling to create premium brand experiences.
+                                </p>
+                                <div class="resume-modal-actions">
+                                    <a href="/assets/resume/Ujjwal-Maurya-Resume.pdf" download="Ujjwal-Maurya-Resume.pdf" class="btn btn-primary resume-modal-download-btn">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="btn-icon-left" style="margin-right: 8px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                        <span>Download Resume</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -483,10 +491,10 @@ export function renderHome() {
 export async function initHome() {
     // Map project card IDs to their primary target folders to scan for cover images
     const projectFolderMappings = {
+        'campaigns': 'assets/campaigns/jewar-organics/',
         'brand-comm': 'assets/brand-communication/goldwood-ply/',
         'ecommerce-design': 'assets/ecommerce/rumaisa/perfume-01/listing/',
-        'campaigns': 'assets/campaigns/jewar-organics/',
-        'renders': 'assets/product-rendering/'
+        'renders': 'assets/renders/'
     };
 
     for (const [projectId, folderPath] of Object.entries(projectFolderMappings)) {
@@ -506,5 +514,51 @@ export async function initHome() {
                 coverWrapper.classList.add('no-image');
             }
         }
+    }
+
+    // Bind Resume Modal Overlay logic
+    const modal = document.getElementById('resume-modal');
+    const closeBtn = document.getElementById('resume-modal-close');
+    const downloadBtns = document.querySelectorAll('.hero-download-btn');
+
+    if (modal && closeBtn && downloadBtns.length > 0) {
+        const openModal = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Scroll lock
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Scroll restore
+        };
+
+        downloadBtns.forEach(btn => {
+            btn.addEventListener('click', openModal);
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // ESC Key listener
+        const escListener = (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        };
+        document.addEventListener('keydown', escListener);
+
+        // Cleanup key listener when route changes (since SPA replaces elements)
+        const cleanupModal = () => {
+            document.removeEventListener('keydown', escListener);
+            window.removeEventListener('hashchange', cleanupModal);
+        };
+        window.addEventListener('hashchange', cleanupModal);
     }
 }

@@ -3,50 +3,157 @@
  */
 import { fetchImagesFromFolder, uploadFileToFolder, fetchSubdirsFromFolder } from '../src/utils.js';
 
-export function renderEcommerce() {
-    return `
-    <!-- Case Study Hero -->
-    <section class="case-study-hero" style="background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.95) 100%), radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); background-size: cover; background-position: center; min-height: 40vh;">
-        <div class="container case-study-title-block">
-            <span class="case-study-category">SELECTED E-COMMERCE WORK</span>
-            <h1 class="case-study-title">E-Commerce Design</h1>
-            <p style="color: var(--color-text-muted); font-size: 1.15rem; max-width: 700px; font-weight: 300; margin-bottom: var(--space-md);">
-                Amazon Listing Designs, Amazon A+ Content, infographics, commercial product storytelling layouts, and conversion-focused digital storefront graphics designed by Ujjwal Maurya.
-            </p>
-            <a href="#home#selected-work" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">
-                &larr; Back to Portfolio
+const CLIENT_META = {
+    "camx": {
+        name: "CAMX",
+        description: "High-reliability professional camera accessories and electronic equipment styling.",
+        category: "Camera Accessories",
+        summary: "Drafted a complete e-commerce product listings and custom brand storytelling blueprint showing high-tolerance engineering designs.",
+        coverImg: "assets/ecommerce/camx/am-01/listing/Artboard 1.png"
+    },
+    "rumaisa": {
+        name: "RUMAISA",
+        description: "Exquisite and luxury fragrance bottle packaging, listing imagery, and conversion branding.",
+        category: "Fragrances & Cosmetics",
+        summary: "Designed luxury packaging listings and lifestyle infographics focusing on scents profiles, ingredients highlights, and premium bottle designs.",
+        coverImg: "assets/ecommerce/rumaisa/perfume-01/listing/Artboard 1.png"
+    },
+    "petro-luxury": {
+        name: "PETRO LUXURY",
+        description: "Premium perfume brand showcasing elite aesthetics and lifestyle digital storefront designs.",
+        category: "Luxury Fragrances",
+        summary: "Crafted high-fidelity commercial creatives and product infographics representing elite perfumes, luxury lifestyles, and conversion banners.",
+        coverImg: "assets/ecommerce/petro-luxury/product-01/listing/Artboard 1.png"
+    },
+    "amanzi": {
+        name: "AMANZI",
+        description: "Artisanal scents and premium body fragrances with sophisticated visual storytelling.",
+        category: "Body Scents & Care",
+        summary: "Developed visual listings and conversion-centric graphics to capture customer attention and establish premium product positioning.",
+        coverImg: "assets/ecommerce/amanzi/product-01/listing/Artboard 1.png"
+    },
+    "leatherific": {
+        name: "LEATHERIFIC",
+        description: "Genuine leather accessories, tech sleeves, and crafted travel goods storefront visuals.",
+        category: "Premium Leather Goods",
+        summary: "Structured e-commerce infographics emphasizing full-grain leather textures, precise stitching craftsmanship, and utility specifications.",
+        coverImg: "assets/ecommerce/leatherific/product-01/a-plus/Leatherific-Wrist-Prime-Plus-!_01.png"
+    },
+    "storage-containers": {
+        name: "STORAGE CONTAINERS",
+        description: "Smart home organization, kitchen storage, and space-saving utility design systems.",
+        category: "Home & Kitchen",
+        summary: "Drafted conversion-centric listings highlighting materials safety, space-saving layouts, modular stacking, and everyday convenience.",
+        coverImg: "assets/ecommerce/storage-containers/product-01/listing/1.png"
+    }
+};
+
+export function renderEcommerce(subRoute) {
+    if (!subRoute) {
+        // Category Page View
+        const brandListHtml = Object.entries(CLIENT_META).map(([id, meta]) => {
+            const coverImg = meta.coverImg || "";
+
+            return `
+            <a href="#ecommerce/${id}" class="category-brand-card fade-in-section">
+                <div class="category-brand-img-wrapper">
+                    <img src="${coverImg}" alt="${meta.name}" loading="lazy">
+                </div>
+                <div class="category-brand-info">
+                    <span class="category-brand-tag">${meta.category}</span>
+                    <h3 class="category-brand-name">${meta.name}</h3>
+                    <p class="category-brand-desc">${meta.description}</p>
+                    <div class="category-brand-cta-text">
+                        <span>View Case Study</span>
+                        <span class="category-brand-cta-arrow">&rarr;</span>
+                    </div>
+                </div>
             </a>
-        </div>
-    </section>
+            `;
+        }).join('');
 
-    <!-- Dynamic Clients Showcase Container -->
-    <div id="ecommerce-brands-root" style="background-color: #050505; min-height: 50vh;">
-        <div class="container" style="padding: var(--space-xl) 0; text-align: center; color: var(--color-text-muted);">
-            <div class="spinner" style="border: 3px solid rgba(255,107,0,0.1); border-top: 3px solid var(--color-accent); border-radius: 50%; width: 40px; height: 40px; margin: 0 auto 20px auto; animation: spin 1s linear infinite;"></div>
-            <p style="font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;">Scanning portfolio database...</p>
-        </div>
-    </div>
+        return `
+        <!-- Category Hero -->
+        <section class="case-study-hero" style="background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.95) 100%), radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); min-height: 40vh;">
+            <div class="container case-study-title-block">
+                <span class="case-study-category">PORTFOLIO CATEGORY 03</span>
+                <h1 class="case-study-title">Amazon A+ Content &amp; Listing Pages</h1>
+                <p style="color: var(--color-text-muted); font-size: 1.15rem; font-weight: 300; margin-bottom: var(--space-md);">
+                    Amazon product listings, A+ Content layouts, infographical details, and brand storefront modules. Select a client below to view their listing case study.
+                </p>
+                <a href="#home#selected-work" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">
+                    &larr; Back to Portfolio
+                </a>
+            </div>
+        </section>
 
-    <!-- Lightbox Dynamic Overlay Container -->
-    <div class="lightbox-overlay" id="lightbox-overlay">
-        <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
-        <button class="lightbox-btn lightbox-prev-btn" id="lightbox-prev-btn" aria-label="Previous Image">&lsaquo;</button>
-        <div class="lightbox-wrapper">
-            <img class="lightbox-image" id="lightbox-image" src="" alt="Lightbox Preview">
-        </div>
-        <button class="lightbox-btn lightbox-next-btn" id="lightbox-next-btn" aria-label="Next Image">&rsaquo;</button>
-    </div>
-
-    <style>
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        <!-- Brands Grid -->
+        <section class="category-brands-section" style="padding: var(--space-xl) 4vw;">
+            <div class="container">
+                <h2 style="font-family: var(--font-heading); color: var(--color-text-light); text-transform: uppercase; font-size: 1.5rem; margin-bottom: var(--space-lg); letter-spacing: 0.1em; border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-xs);">SELECTED CLIENT WORK</h2>
+                <div class="category-brand-grid">
+                    ${brandListHtml}
+                </div>
+            </div>
+        </section>
+        `;
+    } else {
+        // Individual Client Case Study View
+        const clientId = subRoute;
+        const meta = CLIENT_META[clientId];
+        if (!meta) {
+            window.location.hash = '#ecommerce';
+            return '';
         }
-    </style>
-    `;
+
+        return `
+        <!-- Case Study Hero -->
+        <section class="case-study-hero" style="background-image: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.95) 100%), radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); background-size: cover; background-position: center; min-height: 40vh;">
+            <div class="container case-study-title-block">
+                <span class="case-study-category">Amazon A+ Case Study</span>
+                <h1 class="case-study-title">${meta.name}</h1>
+                <p style="color: var(--color-text-muted); font-size: 1.15rem; font-weight: 300; margin-bottom: var(--space-md);">
+                    ${meta.description}
+                </p>
+                <a href="#ecommerce" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">
+                    &larr; Back to Amazon A+ Content
+                </a>
+            </div>
+        </section>
+
+        <!-- Dynamic Clients Showcase Container -->
+        <div id="ecommerce-brands-root" style="background-color: #050505; min-height: 50vh;">
+            <div class="container" style="padding: var(--space-xl) 0; text-align: center; color: var(--color-text-muted);">
+                <div class="spinner" style="border: 3px solid rgba(255,107,0,0.1); border-top: 3px solid var(--color-accent); border-radius: 50%; width: 40px; height: 40px; margin: 0 auto 20px auto; animation: spin 1s linear infinite;"></div>
+                <p style="font-family: var(--font-heading); font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;">Loading client database...</p>
+            </div>
+        </div>
+
+        <!-- Lightbox Dynamic Overlay Container -->
+        <div class="lightbox-overlay" id="lightbox-overlay">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+            <button class="lightbox-btn lightbox-prev-btn" id="lightbox-prev-btn" aria-label="Previous Image">&lsaquo;</button>
+            <div class="lightbox-wrapper">
+                <img class="lightbox-image" id="lightbox-image" src="" alt="Lightbox Preview">
+            </div>
+            <button class="lightbox-btn lightbox-next-btn" id="lightbox-next-btn" aria-label="Next Image">&rsaquo;</button>
+        </div>
+
+        <style>
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+        `;
+    }
 }
 
-export async function initEcommerce() {
+export async function initEcommerce(subRoute) {
+    if (!subRoute) {
+        return;
+    }
+
     const brandsRoot = document.getElementById('ecommerce-brands-root');
     if (!brandsRoot) return;
 
@@ -88,7 +195,6 @@ export async function initEcommerce() {
         lightboxImg.src = activeImagesList[activeImgIndex];
     }
 
-    // Bind lightbox UI buttons
     if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
     if (prevBtn) {
         prevBtn.addEventListener('click', (e) => {
@@ -112,7 +218,6 @@ export async function initEcommerce() {
         });
     }
 
-    // Keyboard handlers
     function handleKeyDown(e) {
         if (!lightbox || !lightbox.classList.contains('active')) return;
         if (e.key === 'Escape') closeLightbox();
@@ -132,144 +237,74 @@ export async function initEcommerce() {
     };
     window.addEventListener('hashchange', cleanupRouter);
 
-    // Client Metadata for Known Portfolio Brands
-    const CLIENT_META = {
-        "camx": {
-            name: "CAMX",
-            description: "High-reliability professional camera accessories and electronic equipment styling.",
-            category: "Camera Accessories",
-            summary: "Drafted a complete e-commerce product listings and custom brand storytelling blueprint showing high-tolerance engineering designs."
-        },
-        "rumaisa": {
-            name: "RUMAISA",
-            description: "Exquisite and luxury fragrance bottle packaging, listing imagery, and conversion branding.",
-            category: "Fragrances & Cosmetics",
-            summary: "Designed luxury packaging listings and lifestyle infographics focusing on scents profiles, ingredients highlights, and premium bottle designs."
-        },
-        "petro-luxury": {
-            name: "PETRO LUXURY",
-            description: "Premium perfume brand showcasing elite aesthetics and lifestyle digital storefront designs.",
-            category: "Luxury Fragrances",
-            summary: "Crafted high-fidelity commercial creatives and product infographics representing elite perfumes, luxury lifestyles, and conversion banners."
-        },
-        "amanzi": {
-            name: "AMANZI",
-            description: "Artisanal scents and premium body fragrances with sophisticated visual storytelling.",
-            category: "Body Scents & Care",
-            summary: "Developed visual listings and conversion-centric graphics to capture customer attention and establish premium product positioning."
-        },
-        "leatherific": {
-            name: "LEATHERIFIC",
-            description: "Genuine leather accessories, tech sleeves, and crafted travel goods storefront visuals.",
-            category: "Premium Leather Goods",
-            summary: "Structured e-commerce infographics emphasizing full-grain leather textures, precise stitching craftsmanship, and utility specifications."
-        },
-        "storage-containers": {
-            name: "STORAGE CONTAINERS",
-            description: "Smart home organization, kitchen storage, and space-saving utility design systems.",
-            category: "Home & Kitchen",
-            summary: "Drafted conversion-centric listings highlighting materials safety, space-saving layouts, modular stacking, and everyday convenience."
-        }
+    const clientId = subRoute;
+    const meta = CLIENT_META[clientId] || {
+        name: clientId.toUpperCase().replace('-', ' '),
+        description: "Custom brand communication and e-commerce design layout.",
+        category: "E-Commerce Product",
+        summary: "Commercial visual presentation, feature listing design, and conversion-focused infographics."
     };
 
-    // 1. Scan client brand directories dynamically
-    let clientIds = await fetchSubdirsFromFolder("assets/ecommerce");
-    if (!clientIds || clientIds.length === 0) {
-        clientIds = Object.keys(CLIENT_META);
-    }
-
-    // Filter to ensure known layout order is maintained, but append new dynamic folders at the end
-    const orderedClientIds = Object.keys(CLIENT_META).filter(id => clientIds.includes(id));
-    clientIds.forEach(id => {
-        if (!orderedClientIds.includes(id)) {
-            orderedClientIds.push(id);
-        }
-    });
-
-    // Populate the clients shell
-    let brandsHtml = "";
-    const clientProducts = {};
-
-    for (let index = 0; index < orderedClientIds.length; index++) {
-        const clientId = orderedClientIds[index];
-        const meta = CLIENT_META[clientId] || {
-            name: clientId.toUpperCase().replace('-', ' '),
-            description: "Custom brand communication and e-commerce design layout.",
-            category: "E-Commerce Product",
-            summary: "Commercial visual presentation, feature listing design, and conversion-focused infographics."
-        };
-
-        brandsHtml += `
-        <section class="brand-detail-section" id="section-${clientId}" style="padding: var(--space-xl) 8vw; ${index % 2 === 1 ? 'background-color: var(--color-bg-pitch);' : ''} border-bottom: 1px solid var(--color-border);">
-            <div class="container">
-                <!-- Brand Header -->
-                <div style="margin-bottom: var(--space-md);">
-                    <span style="font-family: var(--font-heading); color: var(--color-accent); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase;">0${index + 1} / E-COMMERCE CLIENT</span>
-                    <h3 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.02em; margin: 15px 0 10px 0; color: var(--color-text-light); text-transform: uppercase;">${meta.name}</h3>
-                    <p style="font-size: 1.15rem; color: var(--color-text-muted); font-weight: 300; max-width: 800px; line-height: 1.6; margin-bottom: 25px;">${meta.description}</p>
-                </div>
-
-                <!-- Navigation Tabs -->
-                <div class="product-tabs" id="tabs-${clientId}">
-                    <!-- Loaded dynamically -->
-                </div>
-
-                <!-- Showcase Panel -->
-                <div class="product-showcase-panel" id="showcase-panel-${clientId}">
-                    <!-- Loaded dynamically on tab selection -->
-                </div>
+    brandsRoot.innerHTML = `
+    <section class="brand-detail-section" id="section-${clientId}" style="padding: var(--space-xl) 4vw; border-bottom: 1px solid var(--color-border);">
+        <div class="container">
+            <!-- Brand Header -->
+            <div style="margin-bottom: var(--space-md);">
+                <span style="font-family: var(--font-heading); color: var(--color-accent); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase;">E-COMMERCE CLIENT CASE STUDY</span>
+                <h3 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; letter-spacing: -0.02em; margin: 15px 0 10px 0; color: var(--color-text-light); text-transform: uppercase;">${meta.name}</h3>
+                <p style="font-size: 1.15rem; color: var(--color-text-muted); font-weight: 300; line-height: 1.6; margin-bottom: 25px;">${meta.description}</p>
             </div>
-        </section>
-        `;
+
+            <!-- Navigation Tabs -->
+            <div class="product-tabs" id="tabs-${clientId}">
+                <!-- Loaded dynamically -->
+            </div>
+
+            <!-- Showcase Panel -->
+            <div class="product-showcase-panel" id="showcase-panel-${clientId}">
+                <!-- Loaded dynamically on tab selection -->
+            </div>
+        </div>
+    </section>
+    `;
+
+    const pSubdirs = await fetchSubdirsFromFolder(`assets/ecommerce/${clientId}`);
+    let products = pSubdirs || [];
+    if (products.length === 0) {
+        if (clientId === "camx") {
+            products = ["am-01", "am-02", "am-03", "am-04"];
+        } else {
+            products = ["product-01"];
+        }
     }
 
-    brandsRoot.innerHTML = brandsHtml;
+    const tabsContainer = document.getElementById(`tabs-${clientId}`);
+    if (tabsContainer) {
+        tabsContainer.innerHTML = products.map((prodId, pIdx) => {
+            const label = prodId.toUpperCase().replace('-', ' ');
+            return `
+                <button class="product-tab-btn ${pIdx === 0 ? 'active' : ''}" data-client="${clientId}" data-product="${prodId}">
+                    ${label}
+                </button>
+            `;
+        }).join('');
 
-    // 2. Scan and load products for each client brand
-    for (const clientId of orderedClientIds) {
-        const pSubdirs = await fetchSubdirsFromFolder(`assets/ecommerce/${clientId}`);
-        let products = pSubdirs || [];
-        if (products.length === 0) {
-            if (clientId === "camx") {
-                products = ["am-01", "am-02", "am-03", "am-04"];
-            } else {
-                products = ["product-01"];
-            }
-        }
-        clientProducts[clientId] = products;
-
-        // Render tab buttons
-        const tabsContainer = document.getElementById(`tabs-${clientId}`);
-        if (tabsContainer) {
-            tabsContainer.innerHTML = products.map((prodId, pIdx) => {
-                const label = prodId.toUpperCase().replace('-', ' ');
-                return `
-                    <button class="product-tab-btn ${pIdx === 0 ? 'active' : ''}" data-client="${clientId}" data-product="${prodId}">
-                        ${label}
-                    </button>
-                `;
-            }).join('');
-
-            // Bind click handler
-            const tabButtons = tabsContainer.querySelectorAll('.product-tab-btn');
-            tabButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    tabButtons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    loadProductShowcase(clientId, btn.getAttribute('data-product'));
-                });
+        const tabButtons = tabsContainer.querySelectorAll('.product-tab-btn');
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                loadProductShowcase(clientId, btn.getAttribute('data-product'));
             });
-        }
-
-        // Initialize with first product
-        if (products.length > 0) {
-            loadProductShowcase(clientId, products[0]);
-        }
+        });
     }
 
-    // Helper: load active product details and images
-    async function loadProductShowcase(clientId, productId) {
-        const showcasePanel = document.getElementById(`showcase-panel-${clientId}`);
+    if (products.length > 0) {
+        loadProductShowcase(clientId, products[0]);
+    }
+
+    async function loadProductShowcase(cId, productId) {
+        const showcasePanel = document.getElementById(`showcase-panel-${cId}`);
         if (!showcasePanel) return;
 
         showcasePanel.innerHTML = `
@@ -278,22 +313,14 @@ export async function initEcommerce() {
             </div>
         `;
 
-        const meta = CLIENT_META[clientId] || {
-            name: clientId.toUpperCase(),
-            category: "E-Commerce Product",
-            summary: "Commercial visual presentation, feature listing design, and conversion-focused infographics."
-        };
+        const listingFolderPath = `assets/ecommerce/${cId}/${productId}/listing/`;
+        const aplusFolderPath = `assets/ecommerce/${cId}/${productId}/a-plus/`;
 
-        const listingFolderPath = `assets/ecommerce/${clientId}/${productId}/listing/`;
-        const aplusFolderPath = `assets/ecommerce/${clientId}/${productId}/a-plus/`;
-
-        // Fetch image paths
         const listingImages = await fetchImagesFromFolder(listingFolderPath);
         const aplusImages = await fetchImagesFromFolder(aplusFolderPath);
 
         const prodLabel = productId.toUpperCase().replace('-', ' ');
 
-        // Render Showcase Template
         showcasePanel.innerHTML = `
             <!-- Product Info Hero Grid -->
             <div class="product-metadata-grid">
@@ -319,7 +346,7 @@ export async function initEcommerce() {
                     <h4 style="font-family: var(--font-heading); color: var(--color-text-light); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; margin: 0; font-weight: 700;">01 / Amazon Listing Images</h4>
                     <span style="font-size: 0.8rem; color: var(--color-text-dark); text-transform: uppercase; letter-spacing: 0.05em;">Vertical creatives (1080 &times; 1350)</span>
                 </div>
-                <div class="masonry-grid" id="listing-grid-${clientId}-${productId}">
+                <div class="masonry-grid" id="listing-grid-${cId}-${productId}">
                     <!-- Dynamically populated -->
                 </div>
             </div>
@@ -330,14 +357,13 @@ export async function initEcommerce() {
                     <h4 style="font-family: var(--font-heading); color: var(--color-text-light); font-size: 0.9rem; letter-spacing: 0.15em; text-transform: uppercase; margin: 0; font-weight: 700;">02 / Amazon A+ Content</h4>
                     <span style="font-size: 0.8rem; color: var(--color-text-dark); text-transform: uppercase; letter-spacing: 0.05em;">Brand narratives &amp; modules</span>
                 </div>
-                <div class="aplus-container" id="aplus-grid-${clientId}-${productId}">
+                <div class="aplus-container" id="aplus-grid-${cId}-${productId}">
                     <!-- Dynamically populated -->
                 </div>
             </div>
         `;
 
-        // Render Listing Images
-        const listingGrid = document.getElementById(`listing-grid-${clientId}-${productId}`);
+        const listingGrid = document.getElementById(`listing-grid-${cId}-${productId}`);
         if (listingGrid) {
             if (listingImages && listingImages.length > 0) {
                 listingGrid.innerHTML = listingImages.map((imgSrc, imgIdx) => `
@@ -346,7 +372,6 @@ export async function initEcommerce() {
                     </div>
                 `).join('');
 
-                // Click handler
                 listingGrid.querySelectorAll('.masonry-item').forEach(item => {
                     item.addEventListener('click', () => {
                         activeImagesList = [...listingImages, ...aplusImages];
@@ -354,16 +379,15 @@ export async function initEcommerce() {
                     });
                 });
             } else {
-                // Render upload placeholder
                 listingGrid.innerHTML = `
-                    <div class="upload-placeholder-card" id="upload-listing-${clientId}-${productId}">
+                    <div class="upload-placeholder-card" id="upload-listing-${cId}-${productId}">
                         <div class="upload-placeholder-icon" style="color: var(--color-accent);">+</div>
                         <div class="upload-placeholder-text">Upload Listing Images</div>
-                        <input type="file" id="input-listing-${clientId}-${productId}" accept="image/*" multiple style="display: none;">
+                        <input type="file" id="input-listing-${cId}-${productId}" accept="image/*" multiple style="display: none;">
                     </div>
                 `;
-                const uploadCard = document.getElementById(`upload-listing-${clientId}-${productId}`);
-                const fileInput = document.getElementById(`input-listing-${clientId}-${productId}`);
+                const uploadCard = document.getElementById(`upload-listing-${cId}-${productId}`);
+                const fileInput = document.getElementById(`input-listing-${cId}-${productId}`);
                 if (uploadCard && fileInput) {
                     uploadCard.addEventListener('click', () => fileInput.click());
                     fileInput.addEventListener('change', async (e) => {
@@ -374,14 +398,13 @@ export async function initEcommerce() {
                         for (const file of files) {
                             await uploadFileToFolder(listingFolderPath, file);
                         }
-                        loadProductShowcase(clientId, productId);
+                        loadProductShowcase(cId, productId);
                     });
                 }
             }
         }
 
-        // Render A+ Modules
-        const aplusGrid = document.getElementById(`aplus-grid-${clientId}-${productId}`);
+        const aplusGrid = document.getElementById(`aplus-grid-${cId}-${productId}`);
         if (aplusGrid) {
             if (aplusImages && aplusImages.length > 0) {
                 aplusGrid.innerHTML = aplusImages.map((imgSrc, imgIdx) => `
@@ -390,7 +413,6 @@ export async function initEcommerce() {
                     </div>
                 `).join('');
 
-                // Click handler
                 aplusGrid.querySelectorAll('.aplus-module-card').forEach(item => {
                     item.addEventListener('click', () => {
                         activeImagesList = [...listingImages, ...aplusImages];
@@ -398,16 +420,15 @@ export async function initEcommerce() {
                     });
                 });
             } else {
-                // Render upload placeholder
                 aplusGrid.innerHTML = `
-                    <div class="upload-placeholder-card" id="upload-aplus-${clientId}-${productId}" style="aspect-ratio: 97 / 30; min-height: 180px;">
+                    <div class="upload-placeholder-card" id="upload-aplus-${cId}-${productId}" style="aspect-ratio: 97 / 30; min-height: 180px;">
                         <div class="upload-placeholder-icon" style="color: var(--color-accent);">+</div>
                         <div class="upload-placeholder-text">Upload A+ Content Modules</div>
-                        <input type="file" id="input-aplus-${clientId}-${productId}" accept="image/*" multiple style="display: none;">
+                        <input type="file" id="input-aplus-${cId}-${productId}" accept="image/*" multiple style="display: none;">
                     </div>
                 `;
-                const uploadCard = document.getElementById(`upload-aplus-${clientId}-${productId}`);
-                const fileInput = document.getElementById(`input-aplus-${clientId}-${productId}`);
+                const uploadCard = document.getElementById(`upload-aplus-${cId}-${productId}`);
+                const fileInput = document.getElementById(`input-aplus-${cId}-${productId}`);
                 if (uploadCard && fileInput) {
                     uploadCard.addEventListener('click', () => fileInput.click());
                     fileInput.addEventListener('change', async (e) => {
@@ -418,13 +439,12 @@ export async function initEcommerce() {
                         for (const file of files) {
                             await uploadFileToFolder(aplusFolderPath, file);
                         }
-                        loadProductShowcase(clientId, productId);
+                        loadProductShowcase(cId, productId);
                     });
                 }
             }
         }
 
-        // Rebind custom cursor handlers for new items
         if (window.rebindCursor) {
             window.rebindCursor();
         }

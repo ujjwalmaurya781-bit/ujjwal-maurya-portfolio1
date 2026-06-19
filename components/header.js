@@ -6,7 +6,17 @@ export function renderHeader() {
     return `
     <div class="nav-container">
         <div class="logo">
-            <a href="#home">UJJWAL<span>.</span></a>
+            <a href="#home" aria-label="Ujjwal Maurya Home">
+                <svg viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="brand-logo-svg" style="height: 36px; width: auto; display: block;">
+                    <!-- Combined interlocked U and M geometric monogram -->
+                    <!-- U shape (White, slightly outer) -->
+                    <path d="M12 10V24C12 28.42 15.58 32 20 32C24.42 32 28 28.42 28 24V10" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                    <!-- M shape (Orange, overlaying inside right side of U, creating a dynamic lettermark) -->
+                    <path d="M28 32V18L35 25L42 18V32" stroke="var(--color-accent)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Sleek designer accent dot -->
+                    <circle cx="49" cy="32" r="2.5" fill="var(--color-accent)"/>
+                </svg>
+            </a>
         </div>
         
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation">

@@ -10,7 +10,7 @@ export function renderRenders() {
         <div class="container case-study-title-block">
             <span class="case-study-category">CGI &amp; 3D WORK</span>
             <h1 class="case-study-title">Product Rendering</h1>
-            <p style="color: var(--color-text-muted); font-size: 1.15rem; max-width: 650px; font-weight: 300; margin-bottom: var(--space-md);">
+            <p style="color: var(--color-text-muted); font-size: 1.15rem; font-weight: 300; margin-bottom: var(--space-md);">
                 Product renders, packaging renders, lifestyle compositions, CGI visuals, and commercial design presentations. Click any asset to preview in full resolution.
             </p>
             <a href="#home#selected-work" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.75rem;">
@@ -22,7 +22,7 @@ export function renderRenders() {
     <!-- Main Rendering Showcase -->
     <section class="brand-detail-section" id="rendering-showcase">
         <div class="container">
-            <div class="brand-detail-header" style="margin-bottom: var(--space-lg); max-width: 800px;">
+            <div class="brand-detail-header" style="margin-bottom: var(--space-lg);">
                 <span style="font-family: var(--font-heading); color: var(--color-accent); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase;">GALLERY Showcase</span>
                 <h3 class="brand-name" style="font-size: clamp(2.25rem, 4.5vw, 3.25rem); font-weight: 900; letter-spacing: -0.02em; margin: 10px 0; color: var(--color-text-light); text-transform: uppercase;">3D Renders &amp; CGI</h3>
                 <p class="brand-desc" style="font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: var(--color-text-muted);">
@@ -93,7 +93,7 @@ export function initRenders() {
     }
 
     // Init Dynamic Gallery
-    initDynamicGallery('renders', 'assets/product-rendering/', (images) => {
+    initDynamicGallery('renders', 'assets/renders/', (images) => {
         activeImages = images;
 
         const toggleContainer = document.getElementById('toggle-container-renders');

@@ -5,23 +5,33 @@
 export function renderFooter() {
     return `
     <div class="footer-container">
-        <div class="footer-left">
-            <h3 style="font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 2px; color: var(--color-text-light); font-size: 1.1rem; margin-bottom: 5px;">UJJWAL MAURYA</h3>
-            <p style="font-weight: 300;">Visual Designer &bull; Portfolio 2026</p>
-            <p style="margin-top: 10px; font-size: 0.75rem; color: var(--color-text-dark);">&copy; ${new Date().getFullYear()} Ujjwal Maurya. All rights reserved.</p>
+        <div class="footer-left-col">
+            <h3 class="footer-brand-name">Ujjwal Maurya</h3>
+            <p class="footer-brand-title" style="margin-bottom: 24px;">Brand Designer &amp; Visual Storyteller</p>
+            <h4 class="footer-col-header" style="margin-bottom: 12px;">Available for:</h4>
+            <ul class="footer-services-list">
+                <li>Branding</li>
+                <li>Social Media</li>
+                <li>Amazon Content</li>
+                <li>AI Creative Production</li>
+            </ul>
         </div>
         
-        <!-- Footer Social Links -->
-        <div class="footer-socials" style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin: 15px 0;">
-            <a href="mailto:ujjwalmaurya781@gmail.com" target="_blank" rel="noopener" class="footer-link">Email</a>
-            <a href="https://www.linkedin.com/in/ujjwal-maurya-3a997521a" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-            <a href="https://www.behance.net/ujjwalmaurya2" target="_blank" rel="noopener" class="footer-link">Behance</a>
-            <a href="https://www.instagram.com/krishhhhhmaurya" target="_blank" rel="noopener" class="footer-link">Instagram</a>
-            <a href="https://youtube.com/@buntyyyyyyy" target="_blank" rel="noopener" class="footer-link">YouTube</a>
+        <div class="footer-mid-col">
+            <h4 class="footer-col-header">Connect</h4>
+            <div class="footer-social-links-vertical">
+                <a href="mailto:ujjwalmaurya781@gmail.com" target="_blank" rel="noopener" class="footer-link">Email</a>
+                <a href="https://www.linkedin.com/in/ujjwal-maurya-3a997521a" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
+                <a href="https://www.behance.net/ujjwalmaurya2" target="_blank" rel="noopener" class="footer-link">Behance</a>
+                <a href="https://www.instagram.com/krishhhhhmaurya" target="_blank" rel="noopener" class="footer-link">Instagram</a>
+            </div>
         </div>
         
-        <div class="footer-right">
-            <button class="back-to-top" id="back-to-top">Back to Top &uarr;</button>
+        <div class="footer-right-col">
+            <p class="footer-copyright" style="margin-top: 0;">&copy; 2026</p>
+            <div class="footer-scroll-top-wrapper" style="margin-top: var(--space-md);">
+                <button class="back-to-top" id="back-to-top">Back to Top &uarr;</button>
+            </div>
         </div>
     </div>
     `;

@@ -24,12 +24,25 @@ export function initRouter() {
     appRoot.classList.add('page-fade');
 
     function handleRouting() {
-        const fullHash = window.location.hash || '#home';
+        const hash = window.location.hash || '#home';
         
-        // Parse route and anchor (e.g., #home#about -> route='home', anchor='about')
-        const parts = fullHash.split('#').filter(Boolean);
-        const route = parts[0] || 'home';
-        const anchor = parts[1];
+        let routeAndSub = hash.replace(/^#/, '');
+        let anchor = null;
+
+        // Parse route, subroute and anchors
+        if (hash.startsWith('#home#')) {
+            const parts = hash.split('#').filter(Boolean);
+            routeAndSub = 'home';
+            anchor = parts[1];
+        } else if (hash.includes('#') && hash.lastIndexOf('#') > 0) {
+            const parts = hash.split('#').filter(Boolean);
+            routeAndSub = parts[0];
+            anchor = parts[1];
+        }
+
+        const segments = routeAndSub.split('/');
+        const route = segments[0] || 'home';
+        const subRoute = segments[1]; // e.g., 'goldwood-ply' or undefined
 
         const renderPage = routes[route];
 
@@ -38,8 +51,8 @@ export function initRouter() {
             appRoot.classList.remove('active');
 
             setTimeout(() => {
-                // Update HTML
-                appRoot.innerHTML = renderPage();
+                // Update HTML, passing subRoute context
+                appRoot.innerHTML = renderPage(subRoute);
                 
                 // Set page transition active
                 appRoot.classList.add('active');
@@ -50,13 +63,13 @@ export function initRouter() {
                     initHeroParallax();
                     initHome();
                 } else if (route === 'brand-comm') {
-                    initBrandComm();
+                    initBrandComm(subRoute);
                 } else if (route === 'ecommerce') {
-                    initEcommerce();
+                    initEcommerce(subRoute);
                 } else if (route === 'campaigns') {
-                    initCampaigns();
+                    initCampaigns(subRoute);
                 } else if (route === 'renders') {
-                    initRenders();
+                    initRenders(subRoute);
                 }
 
                 // Handle Sub-Anchor scrolling

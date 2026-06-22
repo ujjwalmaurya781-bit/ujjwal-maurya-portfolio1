@@ -19,6 +19,8 @@ const routes = {
 
 export function initRouter() {
     const appRoot = document.getElementById('app-root');
+    let currentRoute = null;
+    let currentSubRoute = null;
     
     // Add page transition wrapper class
     appRoot.classList.add('page-fade');
@@ -43,6 +45,32 @@ export function initRouter() {
         const segments = routeAndSub.split('/');
         const route = segments[0] || 'home';
         const subRoute = segments[1]; // e.g., 'goldwood-ply' or undefined
+
+        // If base route and subroute didn't change, just scroll to anchor and update nav
+        if (currentRoute === route && currentSubRoute === subRoute) {
+            if (anchor) {
+                const targetElement = document.getElementById(anchor);
+                if (targetElement) {
+                    const headerOffset = 150;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                window.scrollTo(0, 0);
+            }
+            updateActiveNavLink(route, anchor);
+            if (window.rebindCursor) {
+                window.rebindCursor();
+            }
+            return;
+        }
+
+        currentRoute = route;
+        currentSubRoute = subRoute;
 
         const isProjectRoute = subRoute && ['brand-comm', 'ecommerce', 'campaigns', 'renders', 'ai-creative'].includes(route);
         const renderPage = isProjectRoute ? renderProjectDetail : routes[route];

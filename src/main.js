@@ -1,6 +1,7 @@
 /**
  * Application Entry Point
  */
+import '../styles/tailwind.css';
 import { initHeader } from '../components/header.js';
 import { initFooter } from '../components/footer.js';
 import { initRouter } from './router.js';
